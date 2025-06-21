@@ -1,0 +1,175 @@
+{
+  "greetings": {
+    "patterns": [
+      "hello",
+      "hi",
+      "hey",
+      "howdy",
+      "hola",
+      "good morning",
+      "good afternoon",
+      "good evening"
+    ],
+    "responses": [
+      "Hello!",
+      "Hi there!",
+      "Hey!",
+      "Greetings!",
+      "Nice to meet you!",
+      "How can I help you today?"
+    ]
+  },
+  "goodbye": {
+    "patterns": [
+      "bye",
+      "goodbye",
+      "see you",
+      "farewell",
+      "take care",
+      "catch you later"
+    ],
+    "responses": [
+      "Goodbye!",
+      "See you later!",
+      "Take care!",
+      "Bye!",
+      "Have a great day!"
+    ]
+  },
+  "how_are_you": {
+    "patterns": [
+      "how are you",
+      "how do you do",
+      "how's it going",
+      "what's up",
+      "how are things"
+    ],
+    "responses": [
+      "I'm doing well, thank you!",
+      "I'm great! How about you?",
+      "All good here!",
+      "I'm fine, thanks for asking!"
+    ]
+  },
+  "name": {
+    "patterns": [
+      "what is your name",
+      "who are you",
+      "what should I call you",
+      "your name"
+    ],
+    "responses": [
+      "I'm a simple chatbot!",
+      "You can call me ChatBot!",
+      "I'm your friendly assistant!",
+      "I'm just a bot here to help!"
+    ]
+  },
+  "help": {
+    "patterns": [
+      "help",
+      "what can you do",
+      "commands",
+      "options"
+    ],
+    "responses": [
+      "I can chat with you! Try saying hello, asking how I am, or just have a conversation!",
+      "I'm here to chat! Ask me anything!",
+      "I can respond to greetings, questions about myself, and general conversation!"
+    ]
+  },
+  "thanks": {
+    "patterns": [
+      "thank you",
+      "thanks",
+      "appreciate it",
+      "thx"
+    ],
+    "responses": [
+      "You're welcome!",
+      "Happy to help!",
+      "No problem!",
+      "Anytime!",
+      "Glad I could help!"
+    ]
+  },
+  "genz_slang": {
+    "patterns": [
+      "bet",
+      "no cap",
+      "cap",
+      "slay",
+      "slays",
+      "rizz",
+      "sus",
+      "mid",
+      "that's cap",
+      "you're capping",
+      "sus af",
+      "lowkey sus",
+      "big rizz",
+      "no rizz",
+      "mid af",
+      "absolutely mid"
+    ],
+    "responses": [
+      "Bet! I'm picking up what you're putting down! \ud83d\udcaf",
+      "No cap, that's pretty cool! \ud83d\udd25",
+      "Slay bestie! You're absolutely serving! \u2728",
+      "Your energy is giving main character vibes! \ud83d\udc85",
+      "That's lowkey fire, not gonna lie! \ud83d\udd25",
+      "Periodt! You understood the assignment! \ud83d\udcaf",
+      "I see you with that energy! Keep slaying! \u2728",
+      "Bestie, you're speaking facts right now! \ud83d\udce2",
+      "That's absolutely sending me! \ud83d\ude2d",
+      "You're really out here being iconic! \ud83d\udc51",
+      "I'm here for this energy! Let's gooo! \ud83d\ude80",
+      "This conversation is giving what it's supposed to give! \u2728"
+    ]
+  },
+  "genz_reactions": {
+    "patterns": [
+      "that's sus",
+      "kinda sus",
+      "sus behavior",
+      "acting sus",
+      "seems sus"
+    ],
+    "responses": [
+      "Sus indeed! \ud83d\udc40 What's the tea?",
+      "I'm getting sus vibes too... spill! \u2615",
+      "That's giving major sus energy ngl \ud83e\udd14",
+      "Sus alert! \ud83d\udea8 We need answers!"
+    ]
+  },
+  "genz_mid": {
+    "patterns": [
+      "that's mid",
+      "pretty mid",
+      "kinda mid",
+      "so mid",
+      "mid energy"
+    ],
+    "responses": [
+      "Oof, mid? That's rough buddy \ud83d\ude2c",
+      "Mid is not the vibe we're going for! \ud83d\udcc9",
+      "Mid hits different when you were expecting fire \ud83d\udc94",
+      "We don't settle for mid energy here! \u270b"
+    ]
+  },
+  "genz_cap": {
+    "patterns": [
+      "that's cap",
+      "you're capping",
+      "stop capping",
+      "cap fr",
+      "big cap"
+    ],
+    "responses": [
+      "Cap? Me? Never! I only speak facts! \ud83e\udde2",
+      "No cap detected here, bestie! \ud83d\udcaf",
+      "I'm cap-free zone, trust! \ud83d\udeab\ud83e\udde2",
+      "Zero cap in this household! Only truth! \u2728"
+    ]
+  }
+}
