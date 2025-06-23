@@ -15,7 +15,10 @@ class GenZSentimentAnalyzer:
                 'bestie': 0.7, 'iconic': 0.9, 'serving': 0.8, 'queen': 0.8,
                 'king': 0.8, 'facts': 0.7, 'based': 0.7, 'bussin': 0.8,
                 'slaps': 0.8, 'goated': 0.9, 'valid': 0.7, 'sends me': 0.8,
-                'understood the assignment': 0.9
+                'understood the assignment': 0.9, 'ate': 0.9, 'she ate': 0.9,
+                'main character': 0.8, 'you ate that': 0.9, 'real one': 0.8,
+                'hard launch': 0.7, 'it’s giving': 0.7, 'extra af': 0.8,
+                'glow up': 0.8, 'living': 0.7, 'thriving': 0.7
             },
             # Negative Gen Z terms
             'negative': {
@@ -23,14 +26,18 @@ class GenZSentimentAnalyzer:
                 'toxic': -0.9, 'salty': -0.6, 'ratio': -0.7, 'L': -0.8,
                 'down bad': -0.7, 'cheugy': -0.6, 'pressed': -0.6,
                 'rent free': -0.5, 'yikes': -0.7, 'ick': -0.8, 'flop': -0.8,
-                'canceled': -0.9, 'dead': -0.8, 'NPC': -0.7
+                'canceled': -0.9, 'dead': -0.8, 'NPC': -0.7, 'not it': -0.7,
+                'dry af': -0.8, 'doing too much': -0.6, 'weird flex': -0.6,
+                'clown': -0.7, 'broke behavior': -0.8
             },
             # Neutral Gen Z terms
             'neutral': {
                 'lowkey': 0.0, 'highkey': 0.0, 'ngl': 0.0, 'fr': 0.0,
                 'deadass': 0.0, 'bet that': 0.0, 'say less': 0.0,
                 'it is what it is': 0.0, 'hits different': 0.0,
-                'built different': 0.0, 'no shot': 0.0, 'periodt': 0.0
+                'built different': 0.0, 'no shot': 0.0, 'periodt': 0.0,
+                'not gonna lie': 0.0, 'real talk': 0.0, 'big mood': 0.0,
+                'same energy': 0.0, 'vibe check': 0.0
             }
         }
     

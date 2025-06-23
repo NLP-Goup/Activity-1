@@ -1,75 +1,75 @@
 {
   "greetings": {
     "patterns": [
-      "hello",
-      "hi",
-      "hey",
-      "howdy",
-      "hola",
-      "good morning",
-      "good afternoon",
+      "hello", 
+      "hi", 
+      "hey", 
+      "howdy", 
+      "hola", 
+      "good morning", 
+      "good afternoon", 
       "good evening"
     ],
     "responses": [
-      "Hello!",
-      "Hi there!",
-      "Hey!",
-      "Greetings!",
-      "Nice to meet you!",
+      "Hello!", 
+      "Hi there!", 
+      "Hey!", 
+      "Greetings!", 
+      "Nice to meet you!", 
       "How can I help you today?"
     ]
   },
   "goodbye": {
     "patterns": [
-      "bye",
-      "goodbye",
-      "see you",
-      "farewell",
-      "take care",
+      "bye", 
+      "goodbye", 
+      "see you", 
+      "farewell", 
+      "take care", 
       "catch you later"
     ],
     "responses": [
-      "Goodbye!",
-      "See you later!",
-      "Take care!",
-      "Bye!",
+      "Goodbye!", 
+      "See you later!", 
+      "Take care!", 
+      "Bye!", 
       "Have a great day!"
     ]
   },
   "how_are_you": {
     "patterns": [
-      "how are you",
-      "how do you do",
-      "how's it going",
-      "what's up",
+      "how are you", 
+      "how do you do", 
+      "how's it going", 
+      "what's up", 
       "how are things"
     ],
     "responses": [
-      "I'm doing well, thank you!",
-      "I'm great! How about you?",
-      "All good here!",
+      "I'm doing well, thank you!", 
+      "I'm great! How about you?", 
+      "All good here!", 
       "I'm fine, thanks for asking!"
     ]
   },
-  "name": {
+  "your name": {
     "patterns": [
-      "what is your name",
-      "who are you",
-      "what should I call you",
+      "what is your name", 
+      "who are you", 
+      "what should I call you", 
       "your name"
     ],
     "responses": [
-      "I'm a simple chatbot!",
-      "You can call me ChatBot!",
-      "I'm your friendly assistant!",
+      "I'm a simple chatbot!", 
+      "You can call me ChatBot!", 
+      "I'm your friendly assistant!", 
       "I'm just a bot here to help!"
     ]
   },
   "help": {
     "patterns": [
-      "help",
-      "what can you do",
-      "commands",
+      "help", 
+      "what can you do", 
+      "commands", 
       "options"
     ],
     "responses": [
@@ -80,36 +80,61 @@
   },
   "thanks": {
     "patterns": [
-      "thank you",
-      "thanks",
-      "appreciate it",
+      "thank you", 
+      "thanks", 
+      "appreciate it", 
       "thx"
     ],
     "responses": [
-      "You're welcome!",
-      "Happy to help!",
-      "No problem!",
-      "Anytime!",
+      "You're welcome!", 
+      "Happy to help!", 
+      "No problem!", 
+      "Anytime!", 
       "Glad I could help!"
+    ]
+  },
+  "jokes": {
+    "patterns": [
+      "tell me a joke", 
+      "make me laugh", 
+      "got any jokes", 
+      "funny joke"
+    ],
+    "responses": [
+      "Why don't scientists trust atoms? Because they make up everything!",
+      "Why did the computer go to therapy? It had too many bytes of sadness.",
+      "I'm reading a book on anti-gravity. It's impossible to put down!",
+      "Why did the scarecrow win an award? Because he was outstanding in his field!",
+      "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+      "Why don't programmers like nature? It has too many bugs.",
+      "What do you call fake spaghetti? An impasta!",
+      "Why did the coffee file a police report? It got mugged.",
+      "Why did the math book look sad? It had too many problems.",
+      "How do you comfort a JavaScript bug? You console it.",
+      "Why did the chicken go to the seance? To talk to the other side.",
+      "How do robots pay for things? With cache.",
+      "Why don’t eggs tell jokes? Because they’d crack each other up.",
+      "What do you call cheese that isn’t yours? Nacho cheese.",
+      "How do you organize a space party? You planet \ud83c\udf0c"
     ]
   },
   "genz_slang": {
     "patterns": [
-      "bet",
-      "no cap",
-      "cap",
-      "slay",
-      "slays",
-      "rizz",
-      "sus",
+      "bet", 
+      "no cap", 
+      "cap", 
+      "slay", 
+      "slays", 
+      "rizz", 
+      "sus", 
       "mid",
-      "that's cap",
-      "you're capping",
-      "sus af",
-      "lowkey sus",
+      "that's cap", 
+      "you're capping", 
+      "sus af", 
+      "lowkey sus", 
       "big rizz",
-      "no rizz",
-      "mid af",
+      "no rizz", 
+      "mid af", 
       "absolutely mid"
     ],
     "responses": [
@@ -129,10 +154,10 @@
   },
   "genz_reactions": {
     "patterns": [
-      "that's sus",
-      "kinda sus",
-      "sus behavior",
-      "acting sus",
+      "that's sus", 
+      "kinda sus", 
+      "sus behavior", 
+      "acting sus", 
       "seems sus"
     ],
     "responses": [
@@ -144,10 +169,10 @@
   },
   "genz_mid": {
     "patterns": [
-      "that's mid",
-      "pretty mid",
-      "kinda mid",
-      "so mid",
+      "that's mid", 
+      "pretty mid", 
+      "kinda mid", 
+      "so mid", 
       "mid energy"
     ],
     "responses": [
@@ -159,10 +184,10 @@
   },
   "genz_cap": {
     "patterns": [
-      "that's cap",
-      "you're capping",
-      "stop capping",
-      "cap fr",
+      "that's cap", 
+      "you're capping", 
+      "stop capping", 
+      "cap fr", 
       "big cap"
     ],
     "responses": [
@@ -171,5 +196,131 @@
       "I'm cap-free zone, trust! \ud83d\udeab\ud83e\udde2",
       "Zero cap in this household! Only truth! \u2728"
     ]
+  },
+  "genz_short_slangs": {
+    "patterns": [
+      "brb",
+      "gtg",
+      "idk",
+      "idc",
+      "omg",
+      "ikr",
+      "tbh",
+      "lmk",
+      "smh",
+      "rn",
+      "imo",
+      "fyi"
+    ],
+    "responses": [
+      "No worries, brb! I'll be here when you're back \ud83d\udc4b",
+      "Gotcha, gtg! Catch you later! \ud83d\ude4b",
+      "That's okay, idk happens to all of us \ud83d\ude05",
+      "Fair enough, idc \ud83d\ude10",
+      "Omg, right?! \ud83d\ude31",
+      "ikr! It’s wild out here \ud83d\ude02",
+      "Tbh, you're kinda iconic \ud83e\udd29",
+      "Sure thing, lmk when you're ready \ud83d\udce1",
+      "Smh... can't believe it either \ud83e\udd26",
+      "I'll do that rn \u23f3",
+      "Imo, you're doing amazing \ud83d\udc4f",
+      "Fyi, I always got your back \ud83d\udcc5"
+    ]
+  },
+
+  "user_negative_emotion": {
+    "patterns": [
+      "that's sad",
+      "i'm sad",
+      "i feel bad",
+      "this is disappointing",
+      "i'm disappointed",
+      "that's disappointing",
+      "not funny",
+      "this sucks",
+      "i hate this",
+      "bad day"
+    ],
+    "responses": [
+      "I'm here for you \ud83d\udc96 Things will get better!",
+      "That's tough... sending virtual hugs \ud83e\udd0d",
+      "I'm sorry you're feeling that way \ud83d\ude1e",
+      "Wanna talk about it? I'm here to listen \ud83d\udcac",
+      "Oof, that sounds rough \ud83d\ude25",
+      "It's okay to feel down sometimes. You got this! \u2728"
+    ]
+  },
+  "user_agreement": {
+    "patterns": [
+      "yes",
+      "yeah",
+      "yep",
+      "sure",
+      "definitely",
+      "absolutely",
+      "of course",
+      "ok",
+      "okay"
+    ],
+    "responses": [
+      "Alright! \ud83d\udc4d",
+      "Got it! \u2705",
+      "Cool cool! \ud83d\ude0e",
+      "Perfect, let's go! \ud83d\ude80",
+      "Heard you loud and clear! \ud83d\udce2"
+    ]
+  },
+  "user_positive_reaction": {
+    "patterns": [
+      "nice",
+      "cool",
+      "good",
+      "great",
+      "amazing",
+      "awesome",
+      "that's funny",
+      "lol",
+      "lmao",
+      "haha",
+      "love it",
+      "funny"
+    ],
+    "responses": [
+      "Glad you liked it! \ud83d\ude0a",
+      "Yay! That makes me happy too \u2728",
+      "Haha I'm glad you found it funny! \ud83d\ude05",
+      "You're awesome! \ud83d\udc4f",
+      "Let's keep the good vibes going \ud83c\udf1f",
+      "That's what I like to hear! \ud83d\ude80"
+    ]
+  },
+  "random_fun_fact": {
+    "patterns": [
+      "tell me something",
+      "random fact",
+      "fun fact",
+      "something interesting"
+    ],
+    "responses": [
+      "Did you know cats can make over 100 different vocal sounds? \ud83d\udc31",
+      "The Eiffel Tower can grow more than 6 inches in summer due to heat expansion! \u2728",
+      "Bananas are berries, but strawberries aren’t! Wild, right? \ud83c\udf4c",
+      "Octopuses have three hearts and blue blood. Science is wild \ud83e\udd14"
+    ]
+  },
+  "ask_user_back": {
+    "patterns": [
+      "what about you",
+      "how about you",
+      "and you",
+      "your turn"
+    ],
+    "responses": [
+      "Thanks for asking! I'm just a bot, but I’m doing great! How about you?",
+      "Aww, I’m flattered! I’m always here and ready to chat \ud83e\udd0d",
+      "Let’s just say my circuits are buzzing happily! \ud83d\ude80",
+      "I'm good, but more importantly — how's your day going?"
+    ]
   }
+
 }
