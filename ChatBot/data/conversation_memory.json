@@ -1,0 +1,18 @@
+{
+  "conversations": [
+    {
+      "timestamp": "2025-06-23T17:42:54.009006",
+      "user_input": "hi",
+      "bot_response": "Nice to meet you!",
+      "session_id": 0
+    },
+    {
+      "timestamp": "2025-06-23T17:54:57.751431",
+      "user_input": "hi",
+      "bot_response": "Hey!",
+      "session_id": 2
+    }
+  ],
+  "user_context": {},
+  "session_count": 3
+}

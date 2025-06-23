@@ -1,11 +1,11 @@
 import random
 import re
-from sentiment_analyzer import GenZSentimentAnalyzer
-from text_processor import TextProcessor
-from data_manager import DataManager
+from .sentiment_analyzer import GenZSentimentAnalyzer
+from .text_processor import TextProcessor
+from .data_manager import DataManager
 
 class MeowBot:
-    def __init__(self, data_file='chatbot_data.json'):
+    def __init__(self, data_file='ChatBot\data\chatbot_data.json'):
         self.data_manager = DataManager(data_file)
         self.text_processor = TextProcessor()
         self.sentiment_analyzer = GenZSentimentAnalyzer()
@@ -66,6 +66,7 @@ class MeowBot:
             if any(phrase in user_input.lower() for phrase in ["what did i say", "what was i talking about", "before", "earlier"]):
                 return f"You were saying: '{last_conversation['user_input']}'"
             
+            #need to fix when askingf name
             # If user asks about their name and we don't have it stored
             if "my name" in user_input.lower() and "name" not in user_context:
                 # Check if they mentioned their name in recent conversations

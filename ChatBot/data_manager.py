@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 class DataManager:
-    def __init__(self, data_file='chatbot_data.json', memory_file='conversation_memory.json'):
+    def __init__(self, data_file=r'ChatBot\data\chatbot_data.json', memory_file=r'ChatBot\data\conversation_memory.json'):
         self.data_file = data_file
         self.memory_file = memory_file
     

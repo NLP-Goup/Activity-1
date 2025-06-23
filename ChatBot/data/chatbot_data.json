@@ -4,19 +4,25 @@
       "hello",
       "hi",
       "hey",
+      "yow",
       "howdy",
       "hola",
       "good morning",
       "good afternoon",
-      "good evening"
+      "good evening",
+      "sup"
     ],
     "responses": [
       "Hello!",
       "Hi there!",
       "Hey!",
+      "What's Good?",
       "Greetings!",
       "Nice to meet you!",
-      "How can I help you today?"
+      "How can I help you today?",
+      "Greetings Huzz!",
+      "Sup?",
+      "What's good homie?"
     ]
   },
   "goodbye": {
@@ -59,10 +65,10 @@
       "your name"
     ],
     "responses": [
-      "I'm a simple chatbot!",
-      "You can call me ChatBot!",
-      "I'm your friendly assistant!",
-      "I'm just a bot here to help!"
+      "I'm MeowBot!",
+      "You can call me MeowBot!",
+      "I'm your friendly assistant, MeowBot!",
+      "I'm just a cat bot here to help!"
     ]
   },
   "help": {

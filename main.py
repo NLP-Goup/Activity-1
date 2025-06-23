@@ -1,4 +1,4 @@
-from chatbot import MeowBot
+from ChatBot import MeowBot
 import sys
 
 def main():
