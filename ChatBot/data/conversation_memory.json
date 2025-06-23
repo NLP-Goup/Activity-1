@@ -11,8 +11,14 @@
       "user_input": "hi",
       "bot_response": "Hey!",
       "session_id": 2
+    },
+    {
+      "timestamp": "2025-06-23T18:29:44.145760",
+      "user_input": "hi",
+      "bot_response": "Greetings!",
+      "session_id": 5
     }
   ],
   "user_context": {},
-  "session_count": 3
+  "session_count": 5
 }
