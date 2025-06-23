@@ -5,7 +5,7 @@ from .text_processor import TextProcessor
 from .data_manager import DataManager
 
 class MeowBot:
-    def __init__(self, data_file='ChatBot\data\chatbot_data.json'):
+    def __init__(self, data_file=r'ChatBot\data\chatbot_data.json'):
         self.data_manager = DataManager(data_file)
         self.text_processor = TextProcessor()
         self.sentiment_analyzer = GenZSentimentAnalyzer()
