@@ -161,9 +161,28 @@ class DataManager:
                     "I'm cap-free zone, trust! 🚫🧢",
                     "Zero cap in this household! Only truth! ✨"
                 ]
+            },
+            "user_name": {
+                "patterns": [
+                    "what's my name",
+                    "who am i",
+                    "can you remember my name",
+                    "do you know my name",
+                    "tell me my name",
+                    "what did I say earlier about my name"
+                    "do you remember my name"
+                ],
+                "responses": [
+                    "Your name is {name}!",
+                    "I think you're {name}!",
+                    "Pretty sure you said your name is {name}.",
+                    "You're going by {name}, right?",
+                    "Of course, you're {name}!",
+                    "Yes! It's {name}, isn't it?"
+                ]
             }
         }
-    
+
     #not yet functional
     def add_intent(self, intent_name, patterns, responses):
         """Add a new intent to the chatbot data"""

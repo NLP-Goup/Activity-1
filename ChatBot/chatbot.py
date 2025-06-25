@@ -50,7 +50,20 @@ class MeowBot:
         """Enhance response with context from previous conversations"""
         user_context = self.data_manager.get_user_context()
         recent_conversations = self.data_manager.get_recent_conversations(3)
-        
+
+        if any(phrase in user_input.lower() for phrase in ["what is my name", "what's my name", "who am i", "do you know my name", "tell me my name", "my name"]):
+            if "name" in user_context:
+                from random import choice
+                bot_data = self.data_manager.load_data()
+                user_name_intent = bot_data.get("user_name", {})
+                responses = user_name_intent.get("responses", [])
+                if responses:
+                    return choice(responses).replace("{name}", user_context["name"])
+                else:
+                    return f"Your name is {user_context['name']}!"
+            else:
+                return "Hmm, I don't think you told me your name yet!"
+                
         if "name" in user_context:
             name = user_context["name"]
             if "hello" in user_input.lower() or "hi" in user_input.lower():
@@ -85,6 +98,21 @@ class MeowBot:
         
         # Extract any user information from current input
         user_context_update = self.extract_user_info(user_input)
+
+        # Respond to name introductions directly (e.g., "I'm Tao", "My name is Tao")
+        name_patterns = [
+            r"\bmy name is (\w+)",
+            r"\bi'?m (\w+)",
+            r"\bi am (\w+)",
+            r"\bcall me (\w+)"
+        ]
+        for pattern in name_patterns:
+            match = re.search(pattern, user_input, re.IGNORECASE)
+            if match:
+                name = match.group(1).capitalize()
+                self.data_manager.add_message_to_memory(user_input, f"Hey there, {name}!", user_context={"name": name})
+                return f"Hey there, {name}!"
+
         
         # Analyze Gen Z sentiment
         sentiment_analysis = self.sentiment_analyzer.analyze_sentiment(user_input)
