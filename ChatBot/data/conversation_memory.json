@@ -11,8 +11,56 @@
       "user_input": "hi",
       "bot_response": "Hey!",
       "session_id": 2
+    },
+    {
+      "timestamp": "2025-06-26T18:35:41.185190",
+      "user_input": "hii",
+      "bot_response": "That's interesting! Tell me more.",
+      "session_id": 5
+    },
+    {
+      "timestamp": "2025-06-26T18:35:48.924498",
+      "user_input": "hi",
+      "bot_response": "Hello!",
+      "session_id": 5
+    },
+    {
+      "timestamp": "2025-06-26T18:37:05.535914",
+      "user_input": "hi",
+      "bot_response": "What's good homie?",
+      "session_id": 6
+    },
+    {
+      "timestamp": "2025-06-26T18:38:24.524148",
+      "user_input": "hi",
+      "bot_response": "How can I help you today?",
+      "session_id": 7
+    },
+    {
+      "timestamp": "2025-06-26T18:38:48.028460",
+      "user_input": "hi",
+      "bot_response": "Nice to meet you!",
+      "session_id": 8
+    },
+    {
+      "timestamp": "2025-06-26T18:39:42.661294",
+      "user_input": "hi",
+      "bot_response": "Greetings Huzz!",
+      "session_id": 9
+    },
+    {
+      "timestamp": "2025-06-26T18:40:03.492897",
+      "user_input": "hi",
+      "bot_response": "Sup?",
+      "session_id": 10
+    },
+    {
+      "timestamp": "2025-06-26T18:40:30.812073",
+      "user_input": "hi",
+      "bot_response": "Greetings Huzz!",
+      "session_id": 11
     }
   ],
   "user_context": {},
-  "session_count": 4
+  "session_count": 12
 }
