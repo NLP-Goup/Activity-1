@@ -59,8 +59,52 @@
       "user_input": "hi",
       "bot_response": "Greetings Huzz!",
       "session_id": 11
+    },
+    {
+      "timestamp": "2025-06-27T01:20:15.702774",
+      "user_input": "hi",
+      "bot_response": "Greetings!",
+      "session_id": 14
+    },
+    {
+      "timestamp": "2025-06-27T01:20:49.611836",
+      "user_input": "who am i",
+      "bot_response": "Hmm, I don't think you told me your name yet!",
+      "session_id": 14
+    },
+    {
+      "timestamp": "2025-06-27T01:21:13.161409",
+      "user_input": "i'm jiji",
+      "bot_response": "Hey there, Jiji!",
+      "session_id": 14
+    },
+    {
+      "timestamp": "2025-06-27T01:21:26.855401",
+      "user_input": "tell me a joke",
+      "bot_response": "I'm reading a book on anti-gravity. It's impossible to put down!",
+      "session_id": 14
+    },
+    {
+      "timestamp": "2025-06-27T01:21:36.095144",
+      "user_input": "that's funny",
+      "bot_response": "Glad you liked it! \ud83d\ude0a",
+      "session_id": 14
+    },
+    {
+      "timestamp": "2025-06-27T01:22:55.449792",
+      "user_input": "exit",
+      "bot_response": "That's interesting! Tell me more.",
+      "session_id": 14
+    },
+    {
+      "timestamp": "2025-06-27T01:23:01.658474",
+      "user_input": "quit",
+      "bot_response": "Could you rephrase that?",
+      "session_id": 14
     }
   ],
-  "user_context": {},
-  "session_count": 12
+  "user_context": {
+    "name": "Jiji"
+  },
+  "session_count": 14
 }

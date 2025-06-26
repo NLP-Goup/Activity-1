@@ -4,6 +4,10 @@ import time
 import random
 from pyfiglet import Figlet
 from ChatBot import MeowBot
+import os
+
+print("Current working directory:", os.getcwd())
+print("Font exists?", os.path.exists("fonts/SuperAdorable.ttf"))
 
 class PixelCatGUI:
     def __init__(self):
@@ -11,10 +15,9 @@ class PixelCatGUI:
         self.is_cat_typing = False
         self.typing_animation_frames = 0
         self.chat_history = []
-        
-        # Cat cafe color palette (RGB values) note: you can just change thr RGB to change the color (187, 148, 87)
+
         self.colors = {
-            'cream': (187, 148, 87),        # #EDE0D4 - lightest, main background
+            'cream': (187, 148, 87),       # #EDE0D4 - lightest, main background
             'light_beige': (254, 250, 224),  # #E6CCB2 - secondary background
             'sandy_beige': (221, 161, 94),  # #DDB892 - accent color
             'warm_taupe': (176, 137, 104, 255),   # #B08968 - medium accent
@@ -23,33 +26,40 @@ class PixelCatGUI:
             'soft_white': (255, 250, 245, 255),   # Almost white for contrast
             'warm_orange': (210, 140, 90, 255), 
             'yellow': (221, 161, 94),# Derived warm accent
+            'dark_orange': (255, 140, 0, 255),
+
+            'roman_coffee': (120, 85, 71, 255),
+            'pearl_lusta': (252, 237, 214, 255),
+            'white': (255, 255, 255, 255),
+            'pastel_brown': (200, 180, 160, 255)
+
         }
         
         # Pixel cat ASCII art frames for animation
         self.cat_idle = r"""
-   /\_/\  
-  ( o.o ) 
-   > ^ <  
+   /\_/\ 
+  ( o.o )
+   > ^ < 
         """
         
         self.cat_typing_frames = [
             r"""
-   /\_/\  
-  ( -.o ) 
-   > ^ <  
-    |||   
+   /\_/\ 
+  ( -.o )
+   > ^ < 
+    |||  
         """,
             r"""
-   /\_/\  
-  ( o.- ) 
-   > ^ <  
-   |||    
+   /\_/\ 
+  ( o.- )
+   > ^ < 
+   |||   
         """,
             r"""
-   /\_/\  
-  ( -.- ) 
-   > ^ <  
-  |||     
+   /\_/\ 
+  ( -.- )
+   > ^ < 
+  |||    
         """
         ]
         
@@ -60,21 +70,119 @@ class PixelCatGUI:
         dpg.create_viewport(title="MeowBot", width=1350, height=690, resizable=False, max_width=1200, max_height=690, min_width=1200, min_height=690)
         dpg.setup_dearpygui()
         
+        self.super_adorable_font_path = "SuperAdorable.ttf"   
+        self.bright_aura_font_path = "BrightAura.ttf"      
+
+        self.setup_fonts()
         self.setup_theme()
+        self.create_profile_images()
         self.create_gui()
+
+    def setup_fonts(self):
+        """Loads and sets up custom fonts."""
+        with dpg.font_registry():
+            if os.path.exists(self.super_adorable_font_path):
+                self.super_adorable_font = dpg.add_font(self.super_adorable_font_path, 20) 
+            else:
+                print(f"Warning: SuperAdorable font not found at {self.super_adorable_font_path}. Using default.")
+                self.super_adorable_font = None
+
+            if os.path.exists(self.bright_aura_font_path):
+                self.bright_aura_font = dpg.add_font(self.bright_aura_font_path, 18) 
+            else:
+                print(f"Warning: BrightAura font not found at {self.bright_aura_font_path}. Using default.")
+                self.bright_aura_font = None
+
+    def create_profile_images(self):
+        """Load profile images from JPG files"""
+        with dpg.texture_registry():
+            try:
+                if os.path.exists("user_avatar.jpg"):
+                    width, height, channels, data = dpg.load_image("user_avatar.jpg")
+                    dpg.add_static_texture(width=width, height=height, default_value=data, tag="user_avatar")
+                else:
+                    print("user_avatar.jpg not found. Please add a user avatar image.")
+                    self.create_default_user_avatar()
+                
+                if os.path.exists("bot_avatar.jpg"):
+                    width, height, channels, data = dpg.load_image("bot_avatar.jpg")
+                    dpg.add_static_texture(width=width, height=height, default_value=data, tag="bot_avatar")
+                else:
+                    print("bot_avatar.jpg not found. Please add a bot avatar image.")
+                    self.create_default_bot_avatar()
+                    
+            except Exception as e:
+                print(f"Error loading avatar images: {e}")
+                print("Creating default avatars...")
+                self.create_default_user_avatar()
+                self.create_default_bot_avatar()
+    
+    def create_default_user_avatar(self):
+        """Create default user avatar if JPG file is not found"""
+        user_image_data = []
+        for y in range(50):
+            row = []
+            for x in range(50):
+                center_x, center_y = 25, 25
+                distance = ((x - center_x) ** 2 + (y - center_y) ** 2) ** 0.5
+                
+                if distance <= 23:
+                    if 15 <= y <= 35 and 18 <= x <= 32:
+                        if (15 <= y <= 25 and (x == 18 or x == 32)) or (25 < y <= 35 and 18 <= x <= 32):
+                            row.extend([255, 255, 255, 255])
+                        else:
+                            row.extend([70, 130, 180, 255])
+                    else:
+                        row.extend([70, 130, 180, 255])
+                else:
+                    row.extend([0, 0, 0, 0])
+            user_image_data.extend(row)
+        
+        dpg.add_raw_texture(50, 50, user_image_data, tag="user_avatar", format=dpg.mvFormat_Float_rgba)
+    
+    def create_default_bot_avatar(self):
+        """Create default bot avatar if JPG file is not found"""
+        bot_image_data = []
+        for y in range(50):
+            row = []
+            for x in range(50):
+                center_x, center_y = 25, 25
+                distance = ((x - center_x) ** 2 + (y - center_y) ** 2) ** 0.5
+                
+                if distance <= 23:
+                    if (10 <= y <= 15 and 15 <= x <= 18) or (10 <= y <= 15 and 32 <= x <= 35):
+                        row.extend([0, 0, 0, 255])
+                    elif 25 <= y <= 28 and 23 <= x <= 27:
+                        row.extend([255, 105, 180, 255])
+                    elif y == 32 and (x == 20 or x == 25 or x == 30):
+                        row.extend([0, 0, 0, 255])
+                    else:
+                        row.extend([255, 165, 0, 255])
+                else:
+                    row.extend([0, 0, 0, 0])
+            bot_image_data.extend(row)
+        
+        dpg.add_raw_texture(50, 50, bot_image_data, tag="bot_avatar", format=dpg.mvFormat_Float_rgba)
         
     def setup_theme(self):
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
+                if self.super_adorable_font:
+                    dpg.add_theme_font(self.super_adorable_font)
+
                 # Warm cream background
                 dpg.add_theme_color(dpg.mvThemeCol_WindowBg, self.colors['cream'])
-                dpg.add_theme_color(dpg.mvThemeCol_ChildBg, self.colors['light_beige'])
+                dpg.add_theme_color(dpg.mvThemeCol_ChildBg, self.colors['pearl_lusta'])
                 dpg.add_theme_color(dpg.mvThemeCol_Text, self.colors['rich_brown'])
+                dpg.add_theme_style(dpg.mvStyleVar_FramePadding, 4, 4)
+                dpg.add_theme_style(dpg.mvStyleVar_ItemSpacing, 4, 4)
                 
                 # Button styling - warm and inviting
                 dpg.add_theme_color(dpg.mvThemeCol_Button, self.colors['warm_taupe'])
                 dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, self.colors['sandy_beige'])
                 dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, self.colors['medium_brown'])
+                dpg.add_theme_color(dpg.mvThemeCol_Text, self.colors['soft_white'])
+
                 
                 # Input field styling - soft and warm
                 dpg.add_theme_color(dpg.mvThemeCol_FrameBg, self.colors['soft_white'])
@@ -91,10 +199,11 @@ class PixelCatGUI:
                 
         dpg.bind_theme(global_theme)
         
-        #chat bubble themes
+        # Chat bubble themes
         self.create_bubble_themes()
         
         self.input_border_theme = self.create_input_border_theme()
+        self.conversation_text_theme = self.create_conversation_text_theme() # New theme for conversation text
         
     def create_bubble_themes(self):
         """Create themed styles for chat bubbles"""
@@ -104,27 +213,29 @@ class PixelCatGUI:
                 dpg.add_theme_color(dpg.mvThemeCol_ChildBg, self.colors['sandy_beige'])
                 dpg.add_theme_color(dpg.mvThemeCol_Border, self.colors['warm_taupe'])
                 dpg.add_theme_color(dpg.mvThemeCol_Text, self.colors['rich_brown'])
-                dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 15)
+                dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 25) 
                 dpg.add_theme_style(dpg.mvStyleVar_ChildBorderSize, 2)
-                
-        # Bot bubble theme (left side, warm cream with brown border)
+                dpg.add_theme_style(dpg.mvStyleVar_WindowPadding, 10, 10) # Padding inside bubble
+
+        # Bot bubble theme
         with dpg.theme() as self.bot_bubble_theme:
             with dpg.theme_component(dpg.mvChildWindow):
                 dpg.add_theme_color(dpg.mvThemeCol_ChildBg, self.colors['soft_white'])
                 dpg.add_theme_color(dpg.mvThemeCol_Border, self.colors['medium_brown'])
                 dpg.add_theme_color(dpg.mvThemeCol_Text, self.colors['rich_brown'])
-                dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 15)
+                dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 25)
                 dpg.add_theme_style(dpg.mvStyleVar_ChildBorderSize, 2)
-                
-        # System message theme (centered, warm orange tint)
+                dpg.add_theme_style(dpg.mvStyleVar_WindowPadding, 10, 10) 
+        # System message theme
         with dpg.theme() as self.system_bubble_theme:
             with dpg.theme_component(dpg.mvChildWindow):
                 dpg.add_theme_color(dpg.mvThemeCol_ChildBg, self.colors['light_beige'])
                 dpg.add_theme_color(dpg.mvThemeCol_Border, self.colors['warm_orange'])
                 dpg.add_theme_color(dpg.mvThemeCol_Text, self.colors['rich_brown'])
-                dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 15)
+                dpg.add_theme_style(dpg.mvStyleVar_ChildRounding, 25)
                 dpg.add_theme_style(dpg.mvStyleVar_ChildBorderSize, 2)
-     
+                dpg.add_theme_style(dpg.mvStyleVar_WindowPadding, 10, 10) 
+
     def create_input_border_theme(self):
         with dpg.theme() as input_border_theme:
             with dpg.theme_component(dpg.mvInputText):
@@ -134,8 +245,37 @@ class PixelCatGUI:
                 dpg.add_theme_color(dpg.mvThemeCol_Border, self.colors['warm_taupe'])
                 dpg.add_theme_color(dpg.mvThemeCol_Text, self.colors['rich_brown'])
                 dpg.add_theme_style(dpg.mvStyleVar_FrameBorderSize, 2)
-                dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 8)
+                dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 40)
+                dpg.add_theme_style(dpg.mvStyleVar_FramePadding, 12, 12)   
         return input_border_theme
+
+    def create_conversation_text_theme(self):
+        """Creates a theme specifically for conversation text to apply BrightAura font."""
+        with dpg.theme() as conv_text_theme:
+            with dpg.theme_component(dpg.mvText):
+                if self.bright_aura_font:
+                    dpg.add_theme_font(self.bright_aura_font)
+        return conv_text_theme
+    
+    def calculate_text_size(self, text, wrap_width=400):
+        """Calculate approximate text size for better bubble sizing"""
+        font_height_approx = 22 
+        wrap_factor = 7.5      
+        
+        lines = text.split('\n')
+        total_lines = 0
+        
+        
+        for line in lines:
+            if len(line) == 0:
+                total_lines += 1
+            else:
+                chars_per_line = wrap_width // 8   
+                line_count = max(1, (len(line) + chars_per_line - 1) // chars_per_line)
+                total_lines += line_count
+        
+        estimated_height = max(70, total_lines * 22 + 50)
+        return min(estimated_height, 350)  
         
     def auto_scroll_to_bottom(self):
         """Helper function to properly scroll to bottom with delay"""
@@ -165,7 +305,7 @@ class PixelCatGUI:
                     dpg.add_separator()
                     dpg.add_text("Meowbot whispers:", color=self.colors['medium_brown'])
                     dpg.add_text("Purr... Welcome to our cozy cat chat room! ", tag="cat_status", 
-                               color=self.colors['rich_brown'], wrap=380)
+                                  color=self.colors['rich_brown'], wrap=380)
                     
                     # Cat typing animation area
                     dpg.add_separator()
@@ -176,19 +316,19 @@ class PixelCatGUI:
                     dpg.add_text("Cozy Chat Corner:", color=self.colors['medium_brown'])
                     
                     # Chat history display
-                    with dpg.child_window(width=828, height=500, tag="chat_history", no_scrollbar=False, horizontal_scrollbar=False):
+                    with dpg.child_window(width=828, height=470, tag="chat_history", no_scrollbar=False, horizontal_scrollbar=False):
                         # Initial welcome message
                         self.add_greetings_bubble("Hello! Welcome to our cozy cat cafe! I'm your friendly pixel cat companion. What would you like to chat about today? ☕🐱")
                     
                     # Input area
-                    dpg.add_spacer(height=6)
+                    dpg.add_spacer(height=8)
                     with dpg.group(horizontal=True):
                         dpg.add_input_text(hint="Share your thoughts with our cafe cat...", 
-                                         width=750, height=30, tag="user_input",
-                                         callback=self.on_enter_pressed, multiline=True,
-                                         on_enter=True)
+                                             width=720, height=45, tag="user_input",
+                                             callback=self.on_enter_pressed, multiline=False,
+                                             on_enter=True)
                         dpg.bind_item_theme(dpg.last_item(), self.input_border_theme)
-                        dpg.add_button(label="SEND", callback=self.send_message, height=30, width=70)
+                        dpg.add_button(label="SEND", callback=self.send_message, height=45, width=90)
                     
                     # Control buttons
                     dpg.add_spacer(height=3)
@@ -206,58 +346,89 @@ class PixelCatGUI:
         self.start_animation_thread()
         
     def add_user_bubble(self, message):
+        """Add user message bubble with profile photo"""
+        bubble_height = self.calculate_text_size(message, 380)
+        
         with dpg.group(parent="chat_history", horizontal=True):
-            # Push content to the right
-            dpg.add_spacer(width=320)
+            # Push content to the right for user messages
+            dpg.add_spacer(width=230)
             
-            with dpg.child_window(width=475, height=0, autosize_y=True, 
-                                no_scrollbar=True, border=True):
+            # Chat bubble (now on the left of the avatar)
+            with dpg.child_window(width=450, height=bubble_height, 
+                                  no_scrollbar=True, border=True):
                 dpg.add_text("☕ YOU", color=self.colors['medium_brown'])
-                dpg.add_text(message, color=self.colors['rich_brown'], wrap=380)
+                user_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
+                dpg.bind_item_theme(user_text_id, self.conversation_text_theme) # Bind conversation font
                 
             bubble_id = dpg.last_item()
             dpg.bind_item_theme(bubble_id, self.user_bubble_theme)
-        
+
+            dpg.add_spacer(width=8) # Spacer between bubble and avatar
+            # User avatar (now on the right)
+            dpg.add_image("user_avatar", width=50, height=50)
+            
         dpg.add_spacer(height=10, parent="chat_history")
         
         # Single scroll to bottom
         self.scroll_to_bottom()
 
     def add_bot_bubble(self, message):
-        with dpg.child_window(width=475, height=0, autosize_y=True,
-                            no_scrollbar=True, border=True, parent="chat_history"):
-            dpg.add_text("🐱 MEOWBOT", color=self.colors['medium_brown'])
-            dpg.add_text(message, color=self.colors['rich_brown'], wrap=380)
+        """Add bot message bubble with profile photo"""
+        bubble_height = self.calculate_text_size(message, 380)
+        
+        with dpg.group(parent="chat_history", horizontal=True):
+            # Bot avatar on the left (larger size)
+            dpg.add_image("bot_avatar", width=50, height=50)
+            dpg.add_spacer(width=8)
             
-        bubble_id = dpg.last_item()
-        dpg.bind_item_theme(bubble_id, self.bot_bubble_theme)
+            with dpg.child_window(width=450, height=bubble_height,
+                                  no_scrollbar=True, border=True):
+                dpg.add_text("🐱 MEOWBOT", color=self.colors['medium_brown'])
+                bot_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
+                dpg.bind_item_theme(bot_text_id, self.conversation_text_theme) # Bind conversation font
+                
+            bubble_id = dpg.last_item()
+            dpg.bind_item_theme(bubble_id, self.bot_bubble_theme)
 
         dpg.add_spacer(height=10, parent="chat_history")
         
         self.scroll_to_bottom()
 
     def add_greetings_bubble(self, message):
-        with dpg.child_window(width=380, height=0, autosize_y=True,
-                            no_scrollbar=True, border=True, parent="chat_history"):
-            dpg.add_text("🐱 MEOWBOT", color=self.colors['medium_brown'])
-            dpg.add_text(message, color=self.colors['rich_brown'], wrap=380)
+        """Add greeting message bubble with bot profile photo"""
+        bubble_height = self.calculate_text_size(message, 380)
+        
+        with dpg.group(parent="chat_history", horizontal=True):
+            # Bot avatar on the left (larger size)
+            dpg.add_image("bot_avatar", width=50, height=50)
+            dpg.add_spacer(width=8)
             
-        bubble_id = dpg.last_item()
-        dpg.bind_item_theme(bubble_id, self.bot_bubble_theme)
+            with dpg.child_window(width=450, height=bubble_height,
+                                  no_scrollbar=True, border=True):
+                dpg.add_text("🐱 MEOWBOT", color=self.colors['medium_brown'])
+                greetings_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
+                dpg.bind_item_theme(greetings_text_id, self.conversation_text_theme) # Bind conversation font
+                
+            bubble_id = dpg.last_item()
+            dpg.bind_item_theme(bubble_id, self.bot_bubble_theme)
         
         dpg.add_spacer(height=10, parent="chat_history")
         
         self.scroll_to_bottom()
 
     def add_system_bubble(self, message):
+        """Add system message bubble centered"""
+        bubble_height = self.calculate_text_size(message, 480)
+        
         with dpg.group(parent="chat_history", horizontal=True):
             # Center the bubble
-            dpg.add_spacer(width=110)
+            dpg.add_spacer(width=150)
             
-            with dpg.child_window(width=400, height=0, autosize_y=True, 
-                                no_scrollbar=True, border=True):
+            with dpg.child_window(width=400, height=bubble_height, 
+                                  no_scrollbar=True, border=True):
                 dpg.add_text("☕ CAFE SYSTEM", color=self.colors['warm_orange'])
-                dpg.add_text(message, color=self.colors['rich_brown'], wrap=480)
+                system_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=480)
+                dpg.bind_item_theme(system_text_id, self.conversation_text_theme) # Bind conversation font
                 
             bubble_id = dpg.last_item()
             dpg.bind_item_theme(bubble_id, self.system_bubble_theme)
@@ -275,7 +446,7 @@ class PixelCatGUI:
         threading.Thread(target=delayed_scroll, daemon=True).start()
         
     def on_enter_pressed(self, sender, app_data):
-        """Handle Enter key press"""
+        """Handle Enter key press to send message"""
         self.send_message()
         
     def send_message(self):
@@ -327,7 +498,7 @@ class PixelCatGUI:
                     figlet_text = self.figlet.renderText(typing_text)
                     dpg.set_value("cat_typing_display", figlet_text)
                 except:
-                    dpg.set_value("cat_typing_display", f"~ {typing_text} ~")
+                    dpg.set_value("cat_typing_display", f"~ {typing_dots}")
                 
                 self.typing_animation_frames += 1
             else:
@@ -340,7 +511,7 @@ class PixelCatGUI:
     def start_animation_thread(self):
         animation_thread = threading.Thread(target=self.animate_cat, daemon=True)
         animation_thread.start()
-        
+           
     def show_memory_stats(self):
         memory = self.chatbot.data_manager.load_conversation_memory()
         user_context = memory.get("user_context", {})
@@ -353,7 +524,7 @@ class PixelCatGUI:
         if user_context:
             stats_text += f"What our cafe cat remembers about you:\n"
             for key, value in user_context.items():
-                stats_text += f"  {key}: {value}\n"
+                stats_text += f"   {key}: {value}\n"
         else:
             stats_text += "You're a new visitor to our cafe! Tell me about yourself! ☕"
             
