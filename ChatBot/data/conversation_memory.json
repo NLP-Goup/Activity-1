@@ -101,10 +101,40 @@
       "user_input": "quit",
       "bot_response": "Could you rephrase that?",
       "session_id": 14
+    },
+    {
+      "timestamp": "2025-06-27T09:45:22.515528",
+      "user_input": "hii",
+      "bot_response": "Hey Jiji! Could you rephrase that?",
+      "session_id": 15
+    },
+    {
+      "timestamp": "2025-06-27T09:45:33.495888",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Nice to meet you!",
+      "session_id": 15
+    },
+    {
+      "timestamp": "2025-06-27T09:45:58.099256",
+      "user_input": "how are you?",
+      "bot_response": "I'm doing great, Jiji! I'm fine, thanks for asking!",
+      "session_id": 15
+    },
+    {
+      "timestamp": "2025-06-27T09:46:24.546633",
+      "user_input": "tell me a joke",
+      "bot_response": "Why don't programmers like nature? It has too many bugs.",
+      "session_id": 15
+    },
+    {
+      "timestamp": "2025-06-27T10:44:24.621641",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! How can I help you today?",
+      "session_id": 19
     }
   ],
   "user_context": {
     "name": "Jiji"
   },
-  "session_count": 14
+  "session_count": 19
 }

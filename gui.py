@@ -7,7 +7,7 @@ from ChatBot import MeowBot
 import os
 
 print("Current working directory:", os.getcwd())
-print("Font exists?", os.path.exists("fonts/SuperAdorable.ttf"))
+print("Font exists?", os.path.exists("Assets/fonts/SuperAdorable.ttf"))
 
 class PixelCatGUI:
     def __init__(self):
@@ -65,13 +65,12 @@ class PixelCatGUI:
         
         self.figlet = Figlet(font='small')
         
-        # Setup Dear PyGui
         dpg.create_context()
         dpg.create_viewport(title="MeowBot", width=1350, height=690, resizable=False, max_width=1200, max_height=690, min_width=1200, min_height=690)
         dpg.setup_dearpygui()
         
-        self.super_adorable_font_path = "SuperAdorable.ttf"   
-        self.bright_aura_font_path = "BrightAura.ttf"      
+        self.super_adorable_font_path = "Assets/fonts/Super Adorable.ttf"   
+        self.bright_aura_font_path = "Assets/fonts/Bright Aura.ttf"      
 
         self.setup_fonts()
         self.setup_theme()
@@ -167,9 +166,6 @@ class PixelCatGUI:
     def setup_theme(self):
         with dpg.theme() as global_theme:
             with dpg.theme_component(dpg.mvAll):
-                if self.super_adorable_font:
-                    dpg.add_theme_font(self.super_adorable_font)
-
                 # Warm cream background
                 dpg.add_theme_color(dpg.mvThemeCol_WindowBg, self.colors['cream'])
                 dpg.add_theme_color(dpg.mvThemeCol_ChildBg, self.colors['pearl_lusta'])
@@ -199,11 +195,13 @@ class PixelCatGUI:
                 
         dpg.bind_theme(global_theme)
         
+        if self.super_adorable_font:
+            dpg.bind_font(self.super_adorable_font)
+        
         # Chat bubble themes
         self.create_bubble_themes()
         
         self.input_border_theme = self.create_input_border_theme()
-        self.conversation_text_theme = self.create_conversation_text_theme() # New theme for conversation text
         
     def create_bubble_themes(self):
         """Create themed styles for chat bubbles"""
@@ -248,14 +246,6 @@ class PixelCatGUI:
                 dpg.add_theme_style(dpg.mvStyleVar_FrameRounding, 40)
                 dpg.add_theme_style(dpg.mvStyleVar_FramePadding, 12, 12)   
         return input_border_theme
-
-    def create_conversation_text_theme(self):
-        """Creates a theme specifically for conversation text to apply BrightAura font."""
-        with dpg.theme() as conv_text_theme:
-            with dpg.theme_component(dpg.mvText):
-                if self.bright_aura_font:
-                    dpg.add_theme_font(self.bright_aura_font)
-        return conv_text_theme
     
     def calculate_text_size(self, text, wrap_width=400):
         """Calculate approximate text size for better bubble sizing"""
@@ -358,7 +348,9 @@ class PixelCatGUI:
                                   no_scrollbar=True, border=True):
                 dpg.add_text("☕ YOU", color=self.colors['medium_brown'])
                 user_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
-                dpg.bind_item_theme(user_text_id, self.conversation_text_theme) # Bind conversation font
+                # Apply bright aura font to conversation text if available
+                if self.bright_aura_font:
+                    dpg.bind_item_font(user_text_id, self.bright_aura_font)
                 
             bubble_id = dpg.last_item()
             dpg.bind_item_theme(bubble_id, self.user_bubble_theme)
@@ -385,7 +377,8 @@ class PixelCatGUI:
                                   no_scrollbar=True, border=True):
                 dpg.add_text("🐱 MEOWBOT", color=self.colors['medium_brown'])
                 bot_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
-                dpg.bind_item_theme(bot_text_id, self.conversation_text_theme) # Bind conversation font
+                if self.bright_aura_font:
+                    dpg.bind_item_font(bot_text_id, self.bright_aura_font)
                 
             bubble_id = dpg.last_item()
             dpg.bind_item_theme(bubble_id, self.bot_bubble_theme)
@@ -407,7 +400,8 @@ class PixelCatGUI:
                                   no_scrollbar=True, border=True):
                 dpg.add_text("🐱 MEOWBOT", color=self.colors['medium_brown'])
                 greetings_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
-                dpg.bind_item_theme(greetings_text_id, self.conversation_text_theme) # Bind conversation font
+                if self.bright_aura_font:
+                    dpg.bind_item_font(greetings_text_id, self.bright_aura_font)
                 
             bubble_id = dpg.last_item()
             dpg.bind_item_theme(bubble_id, self.bot_bubble_theme)
@@ -428,7 +422,8 @@ class PixelCatGUI:
                                   no_scrollbar=True, border=True):
                 dpg.add_text("☕ CAFE SYSTEM", color=self.colors['warm_orange'])
                 system_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=480)
-                dpg.bind_item_theme(system_text_id, self.conversation_text_theme) # Bind conversation font
+                if self.bright_aura_font:
+                    dpg.bind_item_font(system_text_id, self.bright_aura_font)
                 
             bubble_id = dpg.last_item()
             dpg.bind_item_theme(bubble_id, self.system_bubble_theme)
