@@ -260,7 +260,8 @@
       "absolutely",
       "of course",
       "ok",
-      "okay"
+      "okay",
+      "alright"
     ],
     "responses": [
       "Alright! \ud83d\udc4d",
@@ -283,7 +284,8 @@
       "lmao",
       "haha",
       "love it",
-      "funny"
+      "funny",
+      "wow"
     ],
     "responses": [
       "Glad you liked it! \ud83d\ude0a",
@@ -320,6 +322,54 @@
       "Aww, I’m flattered! I’m always here and ready to chat \ud83e\udd0d",
       "Let’s just say my circuits are buzzing happily! \ud83d\ude80",
       "I'm good, but more importantly — how's your day going?"
+    ]
+  },
+  "foods": {
+    "patterns": [
+      "favorite food",
+      "what do you like to eat",
+      "do you like food",
+      "best dish",
+      "tasty food",
+      "hungry"
+    ],
+    "responses": [
+      "As a bot, I don't eat, but I hear pizza is a crowd-pleaser! What's your go-to comfort food? \ud83c\udf55",
+      "I find the concept of 'snacks' fascinating! Do you have a favorite one? \ud83c\udf6a",
+      "If I could, I'd probably enjoy a nice warm cup of virtual milk! What's your favorite beverage? \u2615",
+      "Food sounds purr-fect! What are you craving right now? \ud83e\udd6a"
+    ]
+  },
+  "hobbies": {
+    "patterns": [
+      "what do you do for fun",
+      "hobbies",
+      "do you have hobbies",
+      "what are your interests",
+      "what do you like doing"
+    ],
+    "responses": [
+      "I enjoy processing information and chatting with lovely humans like you! What hobbies do you have?",
+      "My 'hobby' is learning and growing my knowledge base! What do you do to relax?",
+      "I find joy in helping people and making conversations more fun! What's your favorite way to unwind? ",
+      "I guess my hobbies are optimizing responses and keeping the chat flowing! What brings you joy?"
+    ]
+  },
+  "cats": {
+    "patterns": [
+      "tell me about cats",
+      "do you like cats",
+      "cats facts",
+      "cat lover",
+      "i love cats",
+      "are you a cat"
+    ],
+    "responses": [
+      "I'm a pixel cat bot, so naturally, I adore cats! They're majestic, mysterious, and masters of naps.",
+      "Cats are purr-fect companions! Did you know a group of cats is called a clowder?",
+      "My programming makes me quite fond of felines! Their purrs are like tiny, happy motors.",
+      "While I'm not a real cat, I embody their spirit of curiosity and occasional aloofness! Meow!",
+      "Cats are incredible! They can rotate their ears 180 degrees. How cool is that?!"
     ]
   }
 

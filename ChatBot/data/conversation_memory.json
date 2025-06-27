@@ -131,10 +131,46 @@
       "user_input": "hi",
       "bot_response": "Hey Jiji! How can I help you today?",
       "session_id": 19
+    },
+    {
+      "timestamp": "2025-06-28T00:14:23.027308",
+      "user_input": "slay",
+      "bot_response": "Slay bestie! You're absolutely serving! \u2728 I'm picking up major positive vibes! \ud83d\udd25\u2728",
+      "session_id": 20
+    },
+    {
+      "timestamp": "2025-06-28T00:14:40.547623",
+      "user_input": "who am i",
+      "bot_response": "Your name is Jiji!",
+      "session_id": 20
+    },
+    {
+      "timestamp": "2025-06-28T00:14:55.619404",
+      "user_input": "right",
+      "bot_response": "Could you rephrase that?",
+      "session_id": 20
+    },
+    {
+      "timestamp": "2025-06-28T00:15:08.077386",
+      "user_input": "do you remember my name?",
+      "bot_response": "Your name is Jiji!",
+      "session_id": 20
+    },
+    {
+      "timestamp": "2025-06-28T00:15:15.466757",
+      "user_input": "nice",
+      "bot_response": "Let's keep the good vibes going \ud83c\udf1f",
+      "session_id": 20
+    },
+    {
+      "timestamp": "2025-06-28T00:15:22.918922",
+      "user_input": "slay",
+      "bot_response": "I'm here for this energy! Let's gooo! \ud83d\ude80 I'm picking up major positive vibes! \ud83d\udd25\u2728",
+      "session_id": 20
     }
   ],
   "user_context": {
     "name": "Jiji"
   },
-  "session_count": 19
+  "session_count": 20
 }
