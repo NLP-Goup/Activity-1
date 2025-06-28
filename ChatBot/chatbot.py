@@ -51,7 +51,6 @@ class MeowBot:
                     user_context["name"] = possible_name.capitalize()
                     break
         
-        return user_context
         
         # preferences
         if "i like" in user_input.lower():
@@ -70,7 +69,7 @@ class MeowBot:
     
     def get_context_aware_response(self, user_input, base_response):
         user_context = self.data_manager.get_user_context()
-        recent_conversations = self.data_manager.get_recent_conversations(3)
+        recent_conversations = self.data_manager.get_recent_conversations(5)
 
         if any(phrase in user_input.lower() for phrase in ["what is my name", "what's my name", "who am i", "do you know my name", "tell me my name", "my name"]):
             if "name" in user_context:

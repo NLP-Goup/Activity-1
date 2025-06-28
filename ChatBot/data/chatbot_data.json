@@ -250,6 +250,16 @@
       "It's okay to feel down sometimes. You got this! \u2728"
     ]
   },
+
+  "sad_opposite": {
+    "patterns": [
+      "not sad"
+    ],
+    "response": [
+      "Glad to hear you're not sad"
+    ]
+  },
+
   "user_agreement": {
     "patterns": [
       "yes",
@@ -285,7 +295,8 @@
       "haha",
       "love it",
       "funny",
-      "wow"
+      "wow",
+      "not"
     ],
     "responses": [
       "Glad you liked it! \ud83d\ude0a",
