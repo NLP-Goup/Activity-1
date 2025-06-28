@@ -371,6 +371,22 @@
       "While I'm not a real cat, I embody their spirit of curiosity and occasional aloofness! Meow!",
       "Cats are incredible! They can rotate their ears 180 degrees. How cool is that?!"
     ]
-  }
+  },
+  "wellbeing": {
+    "patterns": [
+        "i'm doing great", "i'm doin great", "i'm good", "i'm fine", "i'm well",
+        "im doing great", "im doin great", "im good", "im fine", "im well",
+        "doing great", "doin great", "doing good", "doin good",
+        "doing fine", "doin fine", "doing well", "doin well",
+        "i'm okay", "im okay", "i'm alright", "im alright"
+    ],
+    "responses": [
+        "That's great to hear! 😊",
+        "Awesome! How's your day going?",
+        "Glad you're doing well! ✨",
+        "Nice! What's making your day good?",
+        "Fantastic! Keep that positive energy going! 💯"
+    ]
+}
 
 }

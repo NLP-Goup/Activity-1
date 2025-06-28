@@ -1,7 +1,7 @@
 import random
 import re
 from .sentiment_analyzer import GenZSentimentAnalyzer
-from .text_processor import TextProcessor
+from .text_processor import TextProcessor 
 from .data_manager import DataManager
 
 class MeowBot:
@@ -12,24 +12,46 @@ class MeowBot:
         self.data = self.data_manager.load_data()
         self.session_id = self.data_manager.start_new_session()
      
-     
-    #  still fixing when it come to name  
     def extract_user_info(self, user_input):
-        """Extract user information from input (name, preferences, etc.)"""
         user_context = {}
         
-        name_patterns = [
-            r"my name is (\w+)",
-            r"i'm (\w+)",
-            r"i am (\w+)",
-            r"call me (\w+)"
+        wellbeing_phrases = [
+            "doing great", "doin great", "doing good", "doin good",
+            "doing fine", "doin fine", "doing well", "doin well",
+            "i'm good", "im good", "i'm fine", "im fine",
+            "i'm well", "im well", "i'm okay", "im okay",
+            "i'm feeling well", "im feeling well", "feeling well",  # Added these
+            "feeling good", "feeling great", "feeling fine"       # And these
         ]
         
+        non_name_words = {
+            'also', 'just', 'really', 'very', 'quite', 'actually', 
+            'doing', 'feeling', 'good', 'great', 'well', 'fine'
+        }
+        
+        # Check for wellbeing phrases first
+        lower_input = user_input.lower()
+        if any(phrase in lower_input for phrase in wellbeing_phrases):
+            return user_context  
+        
+        name_patterns = [
+            r"^(?:hi|hello|hey),?\s*(?:my name is|i'?m|i am)\s+(\w+)",
+            r"(?:my name is|i'?m|i am)\s+(\w+)(?:$|[\.,!?])",
+            r"call me\s+(\w+)"
+        ]
+        
+        
         for pattern in name_patterns:
-            match = re.search(pattern, user_input.lower())
+            match = re.search(pattern, user_input, re.IGNORECASE)
             if match:
-                user_context["name"] = match.group(1).capitalize()
-                break
+                possible_name = match.group(1).lower()
+                if (len(possible_name) > 2 and 
+                    possible_name not in non_name_words and
+                    possible_name.isalpha()):
+                    user_context["name"] = possible_name.capitalize()
+                    break
+        
+        return user_context
         
         # preferences
         if "i like" in user_input.lower():
@@ -47,7 +69,6 @@ class MeowBot:
         return user_context
     
     def get_context_aware_response(self, user_input, base_response):
-        """Enhance response with context from previous conversations"""
         user_context = self.data_manager.get_user_context()
         recent_conversations = self.data_manager.get_recent_conversations(3)
 
@@ -78,28 +99,70 @@ class MeowBot:
             # If user asks "what did I just say" or similar
             if any(phrase in user_input.lower() for phrase in ["what did i say", "what was i talking about", "before", "earlier"]):
                 return f"You were saying: '{last_conversation['user_input']}'"
-            
-            #need to fix when askingf name
-            # If user asks about their name and we don't have it stored
-            if "my name" in user_input.lower() and "name" not in user_context:
-                # Check if they mentioned their name in recent conversations
-                for conv in recent_conversations:
-                    if "my name is" in conv["user_input"].lower():
-                        name_match = re.search(r"my name is (\w+)", conv["user_input"].lower())
-                        if name_match:
-                            return f"You told me your name is {name_match.group(1).capitalize()}!"
         
         return base_response
     
+    def find_best_intent_match(self, user_input, threshold=0.3):
+        """
+        Find the best matching intent using enhanced Levenshtein distance.
+        Now supports better typo tolerance and fuzzy matching.
+        Returns: tuple (intent_name, best_pattern, similarity_score) or (None, None, 0.0) if no match
+        """
+        best_matches = []
+        
+        # Collect all patterns with their intents and similarity scores
+        for intent, intent_data in self.data.items():
+            patterns = intent_data.get('patterns', [])
+            
+            # Use the enhanced similarity calculation
+            pattern_matches = self.text_processor.find_closest_matches(
+                user_input, patterns, threshold=threshold, top_n=1
+            )
+            
+            if pattern_matches:
+                best_pattern, best_score = pattern_matches[0]
+                best_matches.append((intent, best_pattern, best_score))
+        
+        # Sort by similarity score and return the best match
+        if best_matches:
+            best_matches.sort(key=lambda x: x[2], reverse=True)
+            return best_matches[0]  # (intent, pattern, score)
+        
+        return (None, None, 0.0)  # Return tuple instead of multiple values
+    
+    def handle_typos_and_variations(self, user_input):
+        """
+        Handle common typos and variations using Levenshtein distance.
+        This helps catch misspelled greetings, commands, etc.
+        """
+        # Common phrases that users might misspell
+        common_phrases = [
+            "hello", "goodbye", "thank you", "how are you", "what's up",
+            "help me", "what can you do", "who are you", "what is your name"
+        ]
+        
+        # Try to find the closest match using fuzzy matching
+        closest_match, similarity = self.text_processor.fuzzy_match(
+            user_input, common_phrases, threshold=0.6
+        )
+        
+        if closest_match and similarity > 0.7:
+            return closest_match
+        
+        return user_input  # Return original if no good match found
+    
     def get_response(self, user_input):
-        """Generate response with conversation memory"""
+        """Generate response with enhanced pattern matching using Levenshtein distance"""
         if not user_input.strip():
             return "I didn't catch that. Could you say something?"
+        
+        # Handle potential typos first
+        corrected_input = self.handle_typos_and_variations(user_input)
         
         # Extract any user information from current input
         user_context_update = self.extract_user_info(user_input)
 
-        # Respond to name introductions directly (e.g., "I'm Tao", "My name is Tao")
+        # Respond to name introductions directly
         name_patterns = [
             r"\bmy name is (\w+)",
             r"\bi'?m (\w+)",
@@ -113,44 +176,54 @@ class MeowBot:
                 self.data_manager.add_message_to_memory(user_input, f"Hey there, {name}!", user_context={"name": name})
                 return f"Hey there, {name}!"
 
-        
         # Analyze Gen Z sentiment
         sentiment_analysis = self.sentiment_analyzer.analyze_sentiment(user_input)
         
-        # Find best matching intent (existing logic)
-        best_match = None
-        best_score = 0
-        threshold = 0.3
+        # Find best matching intent using enhanced similarity with Levenshtein distance
+        match_result = self.find_best_intent_match(corrected_input, threshold=0.2)
         
-        for intent, intent_data in self.data.items():
-            patterns = intent_data.get('patterns', [])
-            for pattern in patterns:
-                similarity = self.text_processor.calculate_similarity(user_input, pattern)
-                if similarity > best_score and similarity >= threshold:
-                    best_score = similarity
-                    best_match = intent
-        
-        # create base response
-        if best_match:
-            responses = self.data[best_match].get('responses', [])
-            base_response = random.choice(responses) if responses else "I understand, but I'm not sure how to respond."
-        elif sentiment_analysis['words_found']:
-            base_response = self.sentiment_analyzer.generate_sentiment_response(sentiment_analysis)
+        if match_result[0] is not None:  # Check if we found a match
+            best_intent, best_pattern, best_score = match_result
         else:
-            base_response = random.choice([
-                "I'm sorry, I don't understand that.",
-                "Could you rephrase that?",
-                "That's interesting! Tell me more.",
-                "I'm still learning. Can you try asking something else?"
-            ])
+            best_intent, best_pattern, best_score = None, None, 0.0
         
-        # response with conversation context
+        # Debug information (you can remove this in production)
+        if best_intent and best_score > 0:
+            print(f"🔍 Matched Word: '{best_pattern}' in '{best_intent}' with score {best_score:.3f}")
+        
+        if best_intent and best_score >= 0.2:
+            responses = self.data[best_intent].get('responses', [])
+            base_response = random.choice(responses) if responses else "I understand, but I'm not sure how to respond."
+        elif self.sentiment_analyzer.should_use_sentiment_response(sentiment_analysis, False):
+             base_response = self.sentiment_analyzer.generate_sentiment_response(sentiment_analysis)
+        else:
+            # Suggest similar commands if no match found
+            all_patterns = []
+            for intent_data in self.data.values():
+                all_patterns.extend(intent_data.get('patterns', []))
+            
+            closest_patterns = self.text_processor.find_closest_matches(
+                user_input, all_patterns, threshold=0.15, top_n=2
+            )
+            
+            if closest_patterns:
+                suggestions = [pattern for pattern, _ in closest_patterns]
+                base_response = f"I'm not sure about that. Did you mean something like: {' or '.join(suggestions)}?"
+            else:
+                base_response = random.choice([
+                    "I'm sorry, I don't understand that.",
+                    "Could you rephrase that?",
+                    "That's interesting! Tell me more.",
+                    "I'm still learning. Can you try asking something else?"
+                ])
+        
+        # Enhance response with conversation context
         final_response = self.get_context_aware_response(user_input, base_response)
         
-        # Add sentiment additions if applicable
-        if sentiment_analysis['words_found'] and best_match:
-            sentiment_additions = self.sentiment_analyzer.get_sentiment_additions(sentiment_analysis)
-            final_response += f" {sentiment_additions}"
+        if sentiment_analysis['confidence'] > 0.5:
+            sentiment_modifier = self.sentiment_analyzer.get_sentiment_response_modifier(sentiment_analysis)
+            if sentiment_modifier:
+                final_response += f" {sentiment_modifier}"
         
         # Save this conversation to memory
         self.data_manager.add_message_to_memory(
@@ -178,9 +251,15 @@ class MeowBot:
         else:
             print(f"   I don't know much about you yet!")
     
+    def interactive_add_intent(self):
+        """Interactive method to add new intents (placeholder for your existing implementation)"""
+        print("🐱 MeowBot: Interactive intent addition feature coming soon!")
+        pass
+    
     def chat(self):
-        print("🐱 MeowBot: Hello! I'm your friendly catbot! Type 'exit' to end.")
+        print("🐱 MeowBot: Hello! I'm your friendly catbot with enhanced understanding! Type 'exit' to end.")
         print("🐱 MeowBot: Commands: 'add intent' | 'memory stats' | 'clear memory'")
+        print("🐱 MeowBot: I can now better understand typos and variations in your messages!")
         
         while True:
             try:

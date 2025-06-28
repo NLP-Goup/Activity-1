@@ -6,6 +6,7 @@ from pyfiglet import Figlet
 from ChatBot import MeowBot
 import os
 
+
 class PixelCatGUI:
     def __init__(self):
         self.chatbot = MeowBot()
@@ -314,7 +315,7 @@ class PixelCatGUI:
                         dpg.add_button(label="SEND", callback=self.send_message, height=45, width=90)
 
                     # Control buttons
-                    dpg.add_spacer(height=3)
+                    # dpg.add_spacer(height=2)
                     with dpg.group(horizontal=True):
                         dpg.add_spacer(width=230)
                         dpg.add_button(label="🧠 MEMORY", callback=self.show_memory_stats)
@@ -334,11 +335,11 @@ class PixelCatGUI:
 
         with dpg.group(parent="chat_history", horizontal=True):
             # Push content to the right for user messages
-            dpg.add_spacer(width=230)
+            dpg.add_spacer(width=270)
 
             # Assign a tag to the child window for direct theme binding
             user_bubble_tag = dpg.generate_uuid()
-            with dpg.child_window(width=450, height=bubble_height,
+            with dpg.child_window(width=450, height=bubble_height, no_scroll_with_mouse=True,
                                   no_scrollbar=True, border=True, tag=user_bubble_tag):
                 dpg.add_text("☕ YOU", color=self.colors['medium_brown'])
                 user_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
@@ -369,7 +370,7 @@ class PixelCatGUI:
 
             # Assign a tag to the child window for direct theme binding
             bot_bubble_tag = dpg.generate_uuid()
-            with dpg.child_window(width=450, height=bubble_height,
+            with dpg.child_window(width=450, height=bubble_height, no_scroll_with_mouse=True,
                                   no_scrollbar=True, border=True, tag=bot_bubble_tag):
                 dpg.add_text("🐱 MEOWBOT", color=self.colors['medium_brown'])
                 bot_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
@@ -394,7 +395,7 @@ class PixelCatGUI:
 
             # Assign a tag to the child window for direct theme binding
             greetings_bubble_tag = dpg.generate_uuid()
-            with dpg.child_window(width=450, height=bubble_height,
+            with dpg.child_window(width=450, height=bubble_height, no_scroll_with_mouse=True,
                                   no_scrollbar=True, border=True, tag=greetings_bubble_tag):
                 dpg.add_text("🐱 MEOWBOT", color=self.colors['medium_brown'])
                 greetings_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=400)
@@ -418,7 +419,7 @@ class PixelCatGUI:
 
             # Assign a tag to the child window for direct theme binding
             system_bubble_tag = dpg.generate_uuid()
-            with dpg.child_window(width=400, height=bubble_height,
+            with dpg.child_window(width=400, height=bubble_height, no_scroll_with_mouse=True,
                                   no_scrollbar=True, border=True, tag=system_bubble_tag):
                 dpg.add_text("☕ CAFE SYSTEM", color=self.colors['warm_orange'])
                 system_text_id = dpg.add_text(message, color=self.colors['rich_brown'], wrap=480)
@@ -459,6 +460,15 @@ class PixelCatGUI:
 
     def process_message(self, user_input):
         time.sleep(random.uniform(1, 2))
+        
+        # exit
+        if self.check_exit_keywords(user_input):
+            self.stop_cat_typing()
+            self.add_bot_bubble("Goodbye! The cafe cat will miss you! 🐾☕")
+            dpg.set_value("cat_status", "Meowbot is curling up for a nap... Zzz 💤")
+            time.sleep(2) 
+            dpg.stop_dearpygui()
+            return
 
         response = self.chatbot.get_response(user_input)
 
@@ -539,6 +549,13 @@ class PixelCatGUI:
         self.chat_history = []
         dpg.delete_item("chat_history", children_only=True)
         self.add_bot_bubble("Chat cleared! Ready for new cozy conversations! ☕🐱")
+        
+    def check_exit_keywords(self, user_input):
+        exit_keywords = ["bye", "goodbye", "exit", "quit", "see you", "later, see ya"]
+        for keyword in exit_keywords:
+            if keyword in user_input.lower():
+                return True
+        return False
 
     def run(self):
         dpg.show_viewport()

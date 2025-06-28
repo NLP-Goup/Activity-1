@@ -167,10 +167,250 @@
       "user_input": "slay",
       "bot_response": "I'm here for this energy! Let's gooo! \ud83d\ude80 I'm picking up major positive vibes! \ud83d\udd25\u2728",
       "session_id": 20
+    },
+    {
+      "timestamp": "2025-06-28T10:46:38.955580",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hi there!",
+      "session_id": 21
+    },
+    {
+      "timestamp": "2025-06-28T10:46:53.760202",
+      "user_input": "wyd?",
+      "bot_response": "Bye!",
+      "session_id": 21
+    },
+    {
+      "timestamp": "2025-06-28T10:47:09.264368",
+      "user_input": "what are you doing?",
+      "bot_response": "I find joy in helping people and making conversations more fun! What's your favorite way to unwind? ",
+      "session_id": 21
+    },
+    {
+      "timestamp": "2025-06-28T10:47:25.374860",
+      "user_input": "go[ shopping",
+      "bot_response": "Hello!",
+      "session_id": 21
+    },
+    {
+      "timestamp": "2025-06-28T10:47:32.078322",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! How can I help you today?",
+      "session_id": 21
+    },
+    {
+      "timestamp": "2025-06-28T10:47:40.654454",
+      "user_input": "make me laugh",
+      "bot_response": "How do you comfort a JavaScript bug? You console it.",
+      "session_id": 21
+    },
+    {
+      "timestamp": "2025-06-28T10:47:57.582563",
+      "user_input": "that's funny",
+      "bot_response": "Glad you liked it! \ud83d\ude0a",
+      "session_id": 21
+    },
+    {
+      "timestamp": "2025-06-28T10:48:03.230932",
+      "user_input": "fs",
+      "bot_response": "I'm just a bot here to help!",
+      "session_id": 21
+    },
+    {
+      "timestamp": "2025-06-28T10:51:53.252609",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hi there!",
+      "session_id": 22
+    },
+    {
+      "timestamp": "2025-06-28T10:52:12.558272",
+      "user_input": "what's good?",
+      "bot_response": "I'm doing great, Jiji! I'm fine, thanks for asking!",
+      "session_id": 22
+    },
+    {
+      "timestamp": "2025-06-28T10:52:25.317886",
+      "user_input": "ask me a question",
+      "bot_response": "What do you call fake spaghetti? An impasta!",
+      "session_id": 22
+    },
+    {
+      "timestamp": "2025-06-28T10:52:36.465832",
+      "user_input": "haha",
+      "bot_response": "Let's keep the good vibes going \ud83c\udf1f",
+      "session_id": 22
+    },
+    {
+      "timestamp": "2025-06-28T10:53:16.362776",
+      "user_input": "no cap fr",
+      "bot_response": "I see you with that energy! Keep slaying! \u2728",
+      "session_id": 22
+    },
+    {
+      "timestamp": "2025-06-28T10:53:38.642896",
+      "user_input": "i'm doin well",
+      "bot_response": "Hey there, Doin!",
+      "session_id": 22
+    },
+    {
+      "timestamp": "2025-06-28T10:53:53.238192",
+      "user_input": "no i'm Jiji",
+      "bot_response": "Hey there, Jiji!",
+      "session_id": 22
+    },
+    {
+      "timestamp": "2025-06-28T10:57:02.664327",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hello!",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T10:57:13.827614",
+      "user_input": "what's good?",
+      "bot_response": "I'm doing great, Jiji! I'm fine, thanks for asking!",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T10:57:26.967445",
+      "user_input": "tell me about cats",
+      "bot_response": "Cats are incredible! They can rotate their ears 180 degrees. How cool is that?!",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T10:57:42.595161",
+      "user_input": "so cool",
+      "bot_response": "Mid is not the vibe we're going for! \ud83d\udcc9",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T10:57:58.886861",
+      "user_input": "are you a cat",
+      "bot_response": "While I'm not a real cat, I embody their spirit of curiosity and occasional aloofness! Meow!",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T10:58:14.956277",
+      "user_input": "hobbies?",
+      "bot_response": "I find joy in helping people and making conversations more fun! What's your favorite way to unwind? ",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T10:58:43.494023",
+      "user_input": "do you like food?",
+      "bot_response": "Food sounds purr-fect! What are you craving right now? \ud83e\udd6a",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T10:58:52.319189",
+      "user_input": "pizza",
+      "bot_response": "I'm here for this energy! Let's gooo! \ud83d\ude80",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T10:59:28.838934",
+      "user_input": "imo",
+      "bot_response": "Sure thing, lmk when you're ready \ud83d\udce1",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T11:00:09.226808",
+      "user_input": "brb",
+      "bot_response": "Omg, right?! \ud83d\ude31",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T11:00:27.814247",
+      "user_input": "bbye",
+      "bot_response": "Bye!",
+      "session_id": 23
+    },
+    {
+      "timestamp": "2025-06-28T11:01:10.435818",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hello!",
+      "session_id": 24
+    },
+    {
+      "timestamp": "2025-06-28T11:01:19.145538",
+      "user_input": "what's good",
+      "bot_response": "I'm doing great, Jiji! I'm doing well, thank you!",
+      "session_id": 24
+    },
+    {
+      "timestamp": "2025-06-28T11:04:40.478448",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hi there!",
+      "session_id": 25
+    },
+    {
+      "timestamp": "2025-06-28T11:05:01.081771",
+      "user_input": "what's goodnajdbjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "bot_response": "I'm doing great, Jiji! I'm doing well, thank you!",
+      "session_id": 25
+    },
+    {
+      "timestamp": "2025-06-28T11:05:22.476143",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hello!",
+      "session_id": 25
+    },
+    {
+      "timestamp": "2025-06-28T11:05:40.528993",
+      "user_input": "do you like cats",
+      "bot_response": "While I'm not a real cat, I embody their spirit of curiosity and occasional aloofness! Meow!",
+      "session_id": 25
+    },
+    {
+      "timestamp": "2025-06-28T11:16:53.342071",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hey!",
+      "session_id": 27
+    },
+    {
+      "timestamp": "2025-06-28T11:17:21.538002",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hey!",
+      "session_id": 28
+    },
+    {
+      "timestamp": "2025-06-28T11:19:50.043613",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hello!",
+      "session_id": 29
+    },
+    {
+      "timestamp": "2025-06-28T11:20:38.686446",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! How can I help you today?",
+      "session_id": 30
+    },
+    {
+      "timestamp": "2025-06-28T11:21:03.484701",
+      "user_input": "hey",
+      "bot_response": "Nice to meet you!",
+      "session_id": 31
+    },
+    {
+      "timestamp": "2025-06-28T11:21:29.470946",
+      "user_input": "sup",
+      "bot_response": "I'm great! How about you?",
+      "session_id": 32
+    },
+    {
+      "timestamp": "2025-06-28T12:13:27.751087",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hello!",
+      "session_id": 34
+    },
+    {
+      "timestamp": "2025-06-28T12:15:27.442594",
+      "user_input": "hi",
+      "bot_response": "Hey Jiji! Hello!",
+      "session_id": 35
     }
   ],
   "user_context": {
     "name": "Jiji"
   },
-  "session_count": 20
+  "session_count": 37
 }
