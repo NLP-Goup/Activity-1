@@ -228,37 +228,44 @@
     ]
   },
 
-  "user_negative_emotion": {
+ "user_negative_emotion": {
     "patterns": [
-      "that's sad",
-      "i'm sad",
-      "i feel bad",
-      "this is disappointing",
-      "i'm disappointed",
-      "that's disappointing",
-      "not funny",
-      "this sucks",
-      "i hate this",
-      "bad day"
+        "that's sad",
+        "i'm sad",
+        "i feel bad",
+        "this is disappointing",
+        "i'm disappointed",
+        "that's disappointing",
+        "not funny",
+        "this sucks",
+        "i hate this",
+        "bad day",
+        "i am sad",
+        "feeling sad"
     ],
     "responses": [
-      "I'm here for you \ud83d\udc96 Things will get better!",
-      "That's tough... sending virtual hugs \ud83e\udd0d",
-      "I'm sorry you're feeling that way \ud83d\ude1e",
-      "Wanna talk about it? I'm here to listen \ud83d\udcac",
-      "Oof, that sounds rough \ud83d\ude25",
-      "It's okay to feel down sometimes. You got this! \u2728"
+        "It's okay to be sad sometimes. Do you want to hear more comforting words?",
+        "I'm here for you \ud83d\udc96 Things will get better!",
+        "That's tough... sending virtual hugs \ud83e\udd0d",
+        "I'm sorry you're feeling that way \ud83d\ude1e",
+        "Wanna talk about it? I'm here to listen \ud83d\udcac",
+        "Oof, that sounds rough \ud83d\ude25",
+        "It's okay to feel down sometimes. You got this! \u2728"
     ]
-  },
-
-  "sad_opposite": {
+},
+"sad_opposite": {
     "patterns": [
-      "not sad"
+        "not sad",
+        "i'm not sad",
+        "i am not sad",
+        "not feeling sad"
     ],
-    "response": [
-      "Glad to hear you're not sad"
+    "responses": [
+        "I'm glad you're not sad! Do you want to hear something uplifting?",
+        "That's great to hear you're not sad!",
+        "Wonderful that you're not feeling sad! \ud83d\ude0a"
     ]
-  },
+},
 
   "user_agreement": {
     "patterns": [
